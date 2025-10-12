@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-advvibrate" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+  <name>AdvancedVibrate</name>
+  <js-module src="www/advVibrate.js" name="AdvVibrate">
+    <clobbers target="AdvVibrate" />
+  </js-module>
+
+  <!-- ANDROID -->
+  <platform name="android">
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.VIBRATE" />
+    </config-file>
+    <source-file src="src/android/AdvVibrate.kt" target-dir="app/src/main/java/com/enzo/advvibrate" />
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="AdvVibrate">
+        <param name="android-package" value="com.enzo.advvibrate.AdvVibrate" />
+      </feature>
+    </config-file>
+  </platform>
+
+  <!-- iOS -->
+  <!-- <platform name="ios">
+    <source-file src="src/ios/AdvVibrate.swift" />
+    <config-file target="config.xml" parent="/*">
+      <feature name="AdvVibrate">
+        <param name="ios-package" value="AdvVibrate" />
+      </feature>
+    </config-file>
+  </platform> -->
+</plugin>

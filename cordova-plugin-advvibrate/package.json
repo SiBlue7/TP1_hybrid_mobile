@@ -1,0 +1,21 @@
+{
+  "name": "cordova-plugin-advvibrate",
+  "version": "1.0.0",
+  "description": "Advanced vibration pattern plugin for Cordova",
+  "license": "MIT",
+  "cordova": {
+    "id": "cordova-plugin-advvibrate",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "vibration",
+    "haptics",
+    "ecosystem:cordova"
+  ],
+  "author": "Enzo"
+}
