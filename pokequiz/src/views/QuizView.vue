@@ -106,6 +106,25 @@ const revealColor = ref(false);
 
 const tick = ref(0);
 let timerId = null;
+
+const GOOD = [200]; // 1 vibration
+const BAD = [200, 100, 200]; // 2 vibrations
+const END = [200, 100, 200, 100, 200]; // 3 vibrations
+
+function vibrate(pattern) {
+  if (window?.cordova && window?.AdvVibrate?.vibrate) {
+    window.AdvVibrate.vibrate(
+      pattern,
+      () => {},
+      (e) => console.warn(e)
+    );
+    return;
+  }
+  if (navigator.vibrate) {
+    navigator.vibrate(pattern);
+  }
+}
+
 function startTimer() {
   stopTimer();
   tick.value = 0;
@@ -149,6 +168,7 @@ function next() {
     finished.value = true;
     started.value = false;
     stopTimer();
+    vibrate(END);
   } else {
     loadCurrent();
   }
@@ -156,16 +176,20 @@ function next() {
 function submit() {
   if (!current.value) return;
   const ok = isCorrectAnswer(answer.value, current.value);
+
   if (ok) {
     score.value++;
     revealColor.value = true;
     feedback.value = `✅ Bravo ! C'était ${
       current.value.nameFR || current.value.nameEN
     }.`;
+    vibrate(GOOD);
   } else {
     const name = current.value.nameFR || current.value.nameEN || "inconnu";
     feedback.value = `❌ Raté. C'était ${name}.`;
+    vibrate(BAD);
   }
+
   setTimeout(next, 800);
 }
 async function save() {
@@ -193,6 +217,7 @@ async function save() {
 }
 onMounted(async () => {
   document.addEventListener("deviceready", () => {}, false);
+
   ids.value = randomIds(10, 1, 1025);
   started.value = true;
   startTimer();

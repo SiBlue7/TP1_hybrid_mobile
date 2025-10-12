@@ -15,6 +15,7 @@
   "devDependencies": {
     "cordova-android": "^14.0.1",
     "cordova-browser": "^7.0.0",
+    "cordova-plugin-advvibrate": "file:../../cordova-plugin-advvibrate",
     "cordova-plugin-file": "^8.1.3"
   },
   "cordova": {
@@ -25,7 +26,8 @@
     "plugins": {
       "cordova-plugin-file": {
         "ANDROIDX_WEBKIT_VERSION": "1.4.0"
-      }
+      },
+      "cordova-plugin-advvibrate": {}
     }
   }
 }
