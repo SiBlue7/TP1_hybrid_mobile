@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "android:prepare": "npm run build && cd mobile && cordova prepare",
-    "android:dev": "npm run android:prepare && cd mobile && cordova run android --device --verbose",
+    "android:dev": "npm run android:prepare && cd mobile && cordova run android --verbose",
     "android:clean": "cd mobile && cordova clean android",
     "android:log": "adb logcat Cordova:* chromium:* *:S",
     "android:release": "npm run build && cd mobile && cordova build android --release"

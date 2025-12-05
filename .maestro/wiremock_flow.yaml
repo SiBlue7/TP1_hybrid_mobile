@@ -1,0 +1,28 @@
+appId: com.enzo.pokequiz
+---
+- launchApp
+- evalScript: "window.localStorage.setItem('API_BASE_URL', 'http://localhost:8080/api/v1')"
+- assertVisible: "Accueil"
+- tapOn: "Accueil"
+- assertVisible: "Poké Quiz"
+- tapOn: "Jouer maintenant"
+- extendedWaitUntil:
+    visible: "Nom du Pokémon"
+    timeout: 5000
+- inputText: "Pikachu"
+- hideKeyboard
+- tapOn: "Valider"
+- extendedWaitUntil:
+      visible: "✅ Bravo ! C'était Pikachu."
+      timeout: 2000
+- extendedWaitUntil:
+    visible: "Nom du Pokémon"
+    timeout: 5000
+- inputText: "Carapuce"
+- hideKeyboard
+- tapOn: "Valider"
+- extendedWaitUntil:
+    visible: "❌ Raté. C'était Pikachu."
+    timeout: 2000
+- evalScript: "window.localStorage.removeItem('API_BASE_URL')"
+

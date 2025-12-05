@@ -1,4 +1,6 @@
-const BASE = "https://tyradex.app/api/v1";
+//const BASE = "https://tyradex.app/api/v1";
+const BASE = "http://localhost:8080/api/v1"
+//const BASE = "http://10.0.2.2:8080/api/v1";
 
 export function randomIds(count = 10, min = 1, max = 1025) {
   const set = new Set();
